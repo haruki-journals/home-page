@@ -1,388 +1,237 @@
 <!doctype html>
-<html lang="en" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Journey We Walk Differently</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Cinzel:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <style>
-    .novel-body {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-    }
-    .novel-title {
-      font-family: 'Cinzel', serif;
-    }
-    .drop-cap::first-letter {
-      float: left;
-      font-size: 4.5rem;
-      line-height: 0.8;
-      padding-right: 0.5rem;
-      padding-top: 0.25rem;
-      font-family: 'Cinzel', serif;
-      font-weight: 600;
-    }
-    .chapter-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .chapter-divider::before,
-    .chapter-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, currentColor, transparent);
-    }
-    .page-texture {
-      background-image: 
-        radial-gradient(ellipse at 20% 30%, rgba(200, 190, 180, 0.02) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(200, 190, 180, 0.02) 0%, transparent 50%);
-    }
-  </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full m-0 novel-body">
-  <div id="app-container" class="h-full w-full overflow-auto page-texture flex flex-col" style="background-color: #f8f7f5;">
-   <!-- Header with Back Button -->
-   <header class="z-10 border-b" style="background-color: #f8f7f5; border-color: #e8e6e2;">
-    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between"><button id="back-btn" class="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:opacity-70" style="color: #a89880;">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg><span class="text-sm font-medium">Back</span> </button>
-     <div class="text-center flex-1">
-      <p id="book-title-header" class="novel-title text-sm tracking-widest uppercase" style="color: #a89880;">A Journey We Walk Differently</p>
-     </div>
-     <div class="w-16"></div>
-    </div>
-   </header><!-- Main Content -->
-   <main class="flex-1 max-w-3xl mx-auto px-6 sm:px-12 py-12 w-full">
-    <!-- Chapter Header -->
-    <div class="text-center mb-12">
-     <p id="chapter-label" class="novel-title text-sm tracking-[0.3em] uppercase mb-3" style="color: #b8b0a8;">Prologue</p>
-     <h1 id="chapter-title" class="novel-title text-3xl sm:text-4xl font-medium mb-6" style="color: #6b7280;">Prologue</h1>
-     <div class="chapter-divider text-2xl" style="color: #d8d5d0;">
-      ❧
-     </div>
-    </div><!-- Novel Text -->
-    <article id="novel-content" class="space-y-6 text-base sm:text-lg leading-relaxed" style="color: #5a5450;">
-    </article><!-- Page Footer -->
-    <footer class="mt-12 pt-8 border-t" style="border-color: #e8e6e2;">
-     <div class="flex items-center justify-between">
-      <p id="author-name" class="text-sm italic" style="color: #a89880;">— Priyanshu Verma</p>
-      <p id="book-title-footer" class="novel-title text-xs tracking-widest uppercase" style="color: #b8b0a8;">A Journey We Walk Differently</p>
-     </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haruki Journals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f4ef;
+        --surface: #fbf9f5;
+        --text: #47433f;
+        --muted: #7a736c;
+        --line: #ddd5cb;
+        --button: #5f5a54;
+        --button-hover: #4f4a45;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: linear-gradient(180deg, #fcfaf7 0%, var(--bg) 45%, #f3eee7 100%);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      section {
+        margin-bottom: 5.5rem;
+      }
+
+      .hero {
+        text-align: center;
+        padding-top: 4rem;
+      }
+
+      h1,
+      h2,
+      .quote {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        letter-spacing: 0.01em;
+        font-weight: 500;
+        color: #38342f;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.7rem, 8vw, 4.6rem);
+      }
+
+      .tagline {
+        margin: 1.2rem auto 2.2rem;
+        max-width: 36ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid transparent;
+        background: var(--button);
+        color: #f8f5f1;
+        border-radius: 999px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.92rem;
+        letter-spacing: 0.03em;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .button:hover {
+        background: var(--button-hover);
+        transform: translateY(-1px);
+      }
+
+      h2 {
+        text-align: center;
+        font-size: clamp(1.9rem, 5vw, 2.6rem);
+        margin-bottom: 2rem;
+      }
+
+      .stories {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .story {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.5rem;
+      }
+
+      .story h3 {
+        margin: 0 0 0.7rem;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 500;
+        color: #3d3832;
+      }
+
+      .story p {
+        margin: 0 0 1.2rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .story .button {
+        background: transparent;
+        color: var(--button);
+        border-color: #bdb2a6;
+        font-size: 0.85rem;
+      }
+
+      .story .button:hover {
+        background: #f1ebe3;
+      }
+
+      .quote-section {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 2.6rem 0;
+      }
+
+      .quote {
+        text-align: center;
+        font-style: italic;
+        margin: 0;
+        color: #5a534d;
+        font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+      }
+
+      .about {
+        max-width: 64ch;
+        margin: 0 auto;
+        text-align: center;
+        font-style: italic;
+        color: #5a534d;
+      }
+
+      .about p {
+        color: var(--muted);
+        line-height: 1.9;
+        font-style:normal;
+        margin: 0;
+      }
+
+      footer {
+        text-align: center;
+        color: #8a837b;
+        font-size: 0.85rem;
+        padding-top: 1.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Haruki Journals</h1>
+        <p class="tagline">This is a space where I write about small moments, memories, and the way I see the
+world. Nothing perfect. Just honest
+reflections.
+
+</p>
+        <a class="button" href="#featured-stories">Read Stories</a>
+      </section>
+
+      <section id="featured-stories">
+        <h2>Featured Stories</h2>
+        <div class="stories">
+          <article class="story">
+            <h3>The Tree That Watched Us Grow</h3>
+            <p>
+              A gentle memory of childhood and change, where one silent tree witnesses the slow,
+              beautiful becoming of two distant hearts.
+            </p>
+            <a class="button" href="https://haruki-journal.my.canva.site/the-tree-that-watched-us-grow">Read Story</a>
+          </article>
+
+          <article class="story">
+            <h3>A Journey We Walk Differently</h3>
+            <p>
+             Not every journey is meant to be shared forever —
+but every step we walked together still mattered.
+            </p>
+            <a class="button" href="https://haruki-journal.my.canva.site/a-journey-we-walk-differently">Read Story</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="quote-section" aria-label="Quote">
+        <p class="quote">“Some distances teach us how deeply we once stood beside each other.”</p>
+      </section>
+
+      <section class="about">
+        <h2>About the Author</h2>
+        <p>
+        Hi, I’m Priyanshu.
+        
+I’m a student who writes to understand life a little better.
+
+Sometimes I observe small things — like a memory, or
+a quiet moment — and try to see what they are really
+teaching me.
+
+I’m not here to be perfect.
+
+I’m just here to express what I feel and how I see the world.
+
+This space is my journal — a place for reflection, growth, and
+honest thoughts.
+
+Thank you for reading.
+      </section>
+    
     </footer>
-   </main><!-- Bottom Navigation -->
-   <footer class="border-t z-10" style="background-color: #f8f7f5; border-color: #e8e6e2;">
-    <div class="max-w-3xl mx-auto px-6 py-6 flex items-center justify-between"><button id="prev-btn" class="flex items-center gap-2 px-6 py-2 rounded-lg transition-all duration-300 hover:opacity-70 disabled:opacity-40" disabled style="color: #a89880;">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg><span class="text-sm font-medium">Previous</span> </button>
-     <div class="text-center">
-      <p id="page-indicator" class="text-xs" style="color: #b8b0a8;">Chapter 1 of 6</p>
-     </div><button id="next-btn" class="flex items-center gap-2 px-6 py-2 rounded-lg transition-all duration-300 hover:opacity-70" style="color: #a89880;"> <span class="text-sm font-medium">Next</span>
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg></button>
-    </div>
-   </footer>
-  </div>
-  <script>
-    const chapters = [
-      {
-        label: "Prologue",
-        title: "Prologue",
-        content: `<p class="drop-cap">Sometimes, when I think about how fast life moves, I realize something strange. People say childhood is small, but when it ends, we understand how big it truly was.</p>
-        <p>Today, we stand at the edge of our teenage years.</p>
-        <p>Soon, everyone will move toward their own dreams, their own lives. Not because we want to leave, but because time does not ask before changing things.</p>
-        <p>There was a time when life felt simple — no responsibilities, no fear of change, no fear of losing time. Just laughter, small fights, and moments that never felt temporary.</p>
-        <p>Now things are different. We still talk. We still meet after months. But it is not the same as before.</p>
-        <p>I don't know when it changed. Maybe it happened slowly. Maybe we just didn't notice.</p>
-        <p>This story is not about losing someone.</p>
-        <p>It is about growing with time — about how bonds are tested, and how some memories stay, even when life moves on.</p>`
-      },
-      {
-        label: "Chapter One",
-        title: "The Beginning",
-        content: `<p class="drop-cap">November 25, 2025</p>
-        <p>That was the last day I met him. Not because I would never see him again, but because we were no longer the same as before.</p>
-        <p>We share a bond — one that no one can break, except time.</p>
-        <p>Now we stand on the edge of our teenage years, leaving behind the happiest parts of childhood and the final days of school life.</p>
-        <p>In the future, our bond will still exist. But it may carry small cracks — cracks created by responsibilities, society, and life itself.</p>
-        <p>We no longer have enough time for each other. Day by day, life shows us new faces — faces we are forced to accept.</p>
-        <p>From birth, we were a perfect duo — best buddies, inseparable. No one could take his place. No one ever will.</p>
-        <p>You're probably wondering who I'm talking about.</p>
-        <p>Let me tell you how it all began.</p>
-        <p class="text-center my-8 text-xl" style="color: #b8b0a8;">✦ ✦ ✦</p>
-        <p>March 23, 2008</p>
-        <p>He was born — a tiny soul entering a world already filled with billions of stories, unaware that his own story had just begun.</p>
-        <p>A few months later,</p>
-        <p>July 8, 2008</p>
-        <p>I entered the same world — the one where he had already been waiting.</p>
-        <p>That boy…</p>
-        <p>was me.</p>
-        <p>He waited four months for my arrival.</p>`
-      },
-      {
-        label: "Chapter Two",
-        title: "Growing Together",
-        content: `<p class="drop-cap">For the first one and a half years, we were always together.</p>
-        <p>We did everything at the same time — playing, eating, sleeping.</p>
-        <p>These are things my mother told me later about our early days. She said that after one year, we used to play in the soil for hours and sometimes even fall asleep while playing. Our clothes were always covered in dust. But as children, that was normal.</p>
-        <p>After one and a half years, because of my mother's job, we were separated.</p>
-        <p>After that, we met only sometimes — mostly during festivals.</p>
-        <p>But it was fine for us.</p>
-        <p>The distance made our bond stronger. Even when we met after many months, the happiness was the same. We only wanted to play and enjoy our time together.</p>
-        <p>From the beginning, I never enjoyed summer vacations much because my family would go to my granny's house. But while returning, we used to stay in the village.</p>
-        <p>Those summers created many childhood memories.</p>
-        <p>We bathed in tubewells, played horror games in dark rooms, climbed trees, plucked mangoes and berries, and played cricket until sunset — even when elders scolded us.</p>
-        <p>Sometimes we cried for a while. But soon we forgot everything and started laughing again.</p>
-        <p>I love all my cousins, but he was different.</p>
-        <p>What we shared was not the same as what I had with others. Maybe because we were connected since birth.</p>
-        <p>The most beautiful part of those holidays was sleeping on the rooftop under an endless sky full of stars. And waking up in the morning to the sound of birds.</p>
-        <p>Those memories are unforgettable.</p>`
-      },
-      {
-        label: "Chapter Three",
-        title: "Longings",
-        content: `<p class="drop-cap">Since childhood, I always had one wish —</p>
-        <p>that we would study in the same class, in the same school. That we would ride bicycles together, play together, and stay together always.</p>
-        <p>I wanted to remain his small brother forever.</p>
-        <p>He understands me more than I understand myself. Even when I don't say anything, he knows what I'm about to say.</p>
-        <p>Once, when I asked my mother for ideas to write about, she said,</p>
-        <p>"You both haven't really spent that much time together."</p>
-        <p>Maybe she was right.</p>
-        <p>Because this wish could never fully come true.</p>
-        <p>Some childhood memories slowly started to fade, but the time I spent with him still feels fresh — as if I met him just yesterday.</p>
-        <p>In junior classes, life had no real pressure. We used to sit together and talk about random things — like what would happen if the universe exploded, or if the sun swallowed the earth.</p>
-        <p>You may think those talks were strange, but I loved them more than what we studied in school. We both loved learning about the universe. That curiosity made us think beyond our age.</p>
-        <p>Even today, we sometimes talk about these things.</p>
-        <p>But something has changed.</p>
-        <p>That curiosity slowly fades under responsibilities and expectations.</p>
-        <p>Now, instead of talking about random ideas, we mostly talk about studies, marks, exams, careers, and life.</p>
-        <p>It all changes with time.</p>`
-      },
-      {
-        label: "Chapter Four",
-        title: "When Things Started to Change",
-        content: `<p class="drop-cap">Growing up does not happen in one day.</p>
-        <p>It happens quietly.</p>
-        <p>As time passed, things slowly began to change.</p>
-        <p>Since childhood, I always wanted to be his closest friend. But as we grew older, I started asking myself questions.</p>
-        <p>Am I doing the right thing?</p>
-        <p>Am I becoming a burden?</p>
-        <p>Am I disturbing him?</p>
-        <p>He has his own life.</p>
-        <p>His own friends.</p>
-        <p>His own responsibilities.</p>
-        <p>Then why do I feel like I am interfering?</p>
-        <p>These thoughts never came in childhood. They came later — when life slowly began asking me who I really am.</p>
-        <p>Sometimes, I just want to become a child again and stay there forever.</p>
-        <p>From my heart, I want to say sorry to him.</p>
-        <p>Sorry for overthinking.</p>
-        <p>Sorry for doubting.</p>
-        <p>Sorry if I ever made things difficult.</p>
-        <p>I just want to start again — the way we were in childhood.</p>
-        <p>It has been a long journey, even when we were not always side by side.</p>
-        <p>Time changed many things, but not the bond that began with us.</p>
-        <p>We have come far from where we once started, walking different paths.</p>
-        <p>There are still many words resting in my heart, waiting for the day we meet again — so I can tell him everything.</p>`
-      },
-      {
-        label: "Epilogue",
-        title: "Epilogue",
-        content: `<p class="drop-cap">Life never tells us when something is the last time.</p>
-        <p>The last game.</p>
-        <p>The last laugh.</p>
-        <p>The last day of childhood.</p>
-        <p>They pass quietly, without warning.</p>
-        <p>Growing up taught me that not all bonds need daily presence to survive. Some stay alive through memories, understanding, and silence.</p>
-        <p>We may not walk together every day anymore.</p>
-        <p>We may not talk like we used to.</p>
-        <p>But the roots of our bond were planted deep in childhood, and time could not erase them.</p>
-        <p>Life is not about holding people tightly.</p>
-        <p>It is about respecting their paths while carrying them gently in your heart.</p>
-        <p>This story is not about loss.</p>
-        <p>It is about growth.</p>
-        <p>About accepting change.</p>
-        <p>About being grateful for the people who shaped us — even if they are no longer beside us.</p>
-        <p>If life taught me one thing, it is this:</p>
-        <p>Some connections do not fade.</p>
-        <p>They simply grow quietly — just like us.</p>`
-      }
-    ];
-
-    const defaultConfig = {
-      book_title: "A Journey We Walk Differently",
-      author_name: "Priyanshu Verma",
-      chapter_title: "Prologue",
-      background_color: "#f8f7f5",
-      text_color: "#5a5450",
-      accent_color: "#a89880",
-      border_color: "#e8e6e2",
-      muted_color: "#b8b0a8",
-      font_family: "Cormorant Garamond",
-      font_size: 18
-    };
-
-    let currentChapter = 0;
-    const totalChapters = chapters.length;
-
-    function updateContent() {
-      const chapter = chapters[currentChapter];
-      document.getElementById('chapter-label').textContent = chapter.label;
-      document.getElementById('chapter-title').textContent = chapter.title;
-      document.getElementById('novel-content').innerHTML = chapter.content;
-      document.getElementById('page-indicator').textContent = `Chapter ${currentChapter + 1} of ${totalChapters}`;
-      
-      // Update button states
-      document.getElementById('prev-btn').disabled = currentChapter === 0;
-      document.getElementById('next-btn').disabled = currentChapter === totalChapters - 1;
-      
-      // Scroll to top
-      window.scrollTo(0, 0);
-    }
-
-    async function onConfigChange(config) {
-      const bookTitle = config.book_title || defaultConfig.book_title;
-      const authorName = config.author_name || defaultConfig.author_name;
-      const bgColor = config.background_color || defaultConfig.background_color;
-      const textColor = config.text_color || defaultConfig.text_color;
-      const accentColor = config.accent_color || defaultConfig.accent_color;
-      const borderColor = config.border_color || defaultConfig.border_color;
-      const mutedColor = config.muted_color || defaultConfig.muted_color;
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      const fontSize = config.font_size || defaultConfig.font_size;
-
-      // Update text content
-      document.getElementById('book-title-header').textContent = bookTitle;
-      document.getElementById('book-title-footer').textContent = bookTitle.split(' ')[0];
-      document.getElementById('author-name').textContent = `— ${authorName}`;
-
-      // Update colors
-      const container = document.getElementById('app-container');
-      container.style.backgroundColor = bgColor;
-
-      document.getElementById('novel-content').style.color = textColor;
-      document.getElementById('chapter-title').style.color = textColor;
-
-      document.getElementById('book-title-header').style.color = accentColor;
-      document.getElementById('author-name').style.color = accentColor;
-      document.getElementById('back-btn').style.color = accentColor;
-      document.getElementById('prev-btn').style.color = accentColor;
-      document.getElementById('next-btn').style.color = accentColor;
-
-      document.getElementById('page-indicator').style.color = mutedColor;
-      document.getElementById('chapter-label').style.color = mutedColor;
-      document.getElementById('book-title-footer').style.color = mutedColor;
-      
-      // Update header/footer styles
-      document.querySelector('header').style.backgroundColor = bgColor;
-      document.querySelector('header').style.borderColor = borderColor;
-      document.querySelectorAll('footer').forEach(footer => {
-        footer.style.backgroundColor = bgColor;
-        footer.style.borderColor = borderColor;
-      });
-      document.querySelectorAll('[style*="border-color"]').forEach(el => {
-        if (el.style.borderColor === '#d8d5d0' || el.style.borderColor === '#e8e6e2') {
-          el.style.borderColor = borderColor;
-        }
-      });
-
-      // Update fonts
-      const fontStack = `${fontFamily}, Georgia, serif`;
-      document.getElementById('novel-content').style.fontFamily = fontStack;
-      document.getElementById('novel-content').style.fontSize = `${fontSize}px`;
-    }
-
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => {
-              config.background_color = value;
-              window.elementSdk.setConfig({ background_color: value });
-            }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => {
-              config.text_color = value;
-              window.elementSdk.setConfig({ text_color: value });
-            }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (value) => {
-              config.accent_color = value;
-              window.elementSdk.setConfig({ accent_color: value });
-            }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => {
-            config.font_family = value;
-            window.elementSdk.setConfig({ font_family: value });
-          }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => {
-            config.font_size = value;
-            window.elementSdk.setConfig({ font_size: value });
-          }
-        }
-      };
-    }
-
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ["book_title", config.book_title || defaultConfig.book_title],
-        ["author_name", config.author_name || defaultConfig.author_name],
-        ["chapter_title", config.chapter_title || defaultConfig.chapter_title]
-      ]);
-    }
-
-    // Navigation handlers
-    document.getElementById('back-btn').addEventListener('click', () => {
-      window.location.href = "https://haruki-journal.my.canva.site/a-journey-we-walk-differently";
-       });
-     
-
-    document.getElementById('prev-btn').addEventListener('click', () => {
-      if (currentChapter > 0) {
-        currentChapter--;
-        updateContent();
-      }
-    });
-
-    document.getElementById('next-btn').addEventListener('click', () => {
-      if (currentChapter < totalChapters - 1) {
-        currentChapter++;
-        updateContent();
-      }
-    });
-
-    // Initialize SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
-
-    // Load initial content
-    updateContent();
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d47b85b94f731b8',t:'MTc3MjE5NTcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      <footer>
+        <p>© 2026 Haruki Journals. All rights reserved.</p>
+      </footer>
+    </main>
+  </body>
 </html>
